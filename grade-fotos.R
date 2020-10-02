@@ -1,7 +1,7 @@
 library(tidyverse)
 library(readxl)
 
-classes <- c("garfo", "faca", "colher", "copo", "caneca", "taça", "chave", "caneta", "livro", "caderno")
+classes <- c("garfo", "faca", "colher", "copo", "caneca", "alicate", "chave", "caneta", "livro", "caderno")
 tipo <- c("a", "b", "c")
 fundo <- c("branco", "mickey", "xadrez")
 local <- c("indoor", "outdoor")
@@ -15,12 +15,11 @@ grade <- expand.grid(sequencia = sequencia,
                      objeto = classes,
                      tipo_obj = tipo,
                      fundo = fundo,
-                     iluminação = local_hora)
+                     ilumina��o = local_hora)
 grade <- grade %>% mutate(responsavel = ifelse(objeto %in% classes[1:5],
                                                "Josilton",
                                                "Ciro"))
 grade <- grade %>% mutate(arquivo = paste(row_number(), ".jpg"))
 head(grade)
 
-setwd("~/projects/doutorado/mac5768-visão-processamento-imagens")
-write_excel_csv2(grade, "./rda/grade-fotos.csv")
+#write_excel_csv2(grade, "./dados/grade-fotos.csv")
