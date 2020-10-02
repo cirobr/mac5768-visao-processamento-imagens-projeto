@@ -18,8 +18,7 @@ grade <- expand.grid(sequencia = sequencia,
                      iluminação = local_hora)
 grade <- grade %>% mutate(responsavel = ifelse(objeto %in% classes[1:5],
                                                "Josilton",
-                                               "Ciro"))
-grade <- grade %>% mutate(arquivo = paste(row_number(), ".jpg"))
+                                               "Ciro"),
+                          arquivo = paste(row_number(), ".jpg"))
 head(grade)
-
 #write_excel_csv2(grade, "./dados/grade-fotos.csv")
