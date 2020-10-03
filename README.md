@@ -3,10 +3,10 @@ MAC5768 Projeto de Classe
 
 Projeto de classe da disciplina Visão e Processamento de Imagens
 
-Equipe:\
-Ciro B Rosa\
-Josilton\
+Equipe:
+- Ciro B Rosa
+- Josilton
 
-Arquivos:\
-- resumo-projeto.ipynb: Descritivo do projeto\
+Arquivos:
+- resumo-projeto.ipynb: Descritivo do projeto
 - mac.yml: Configuração de ambiente para Anaconda em Windows 10
