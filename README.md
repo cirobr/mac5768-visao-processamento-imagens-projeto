@@ -5,7 +5,7 @@ Projeto de classe da disciplina Visão e Processamento de Imagens
 
 Equipe:
 - Ciro B Rosa
-- Josilton
+- Josilton Sousa
 
 Arquivos:
 - resumo-projeto.ipynb: Descritivo do projeto
