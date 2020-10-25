@@ -10,7 +10,8 @@ Equipe:
 
 Pastas e Arquivos EP1
 =====================
-Descritivo do projeto: resumo-projeto.ipynb
+Descritivo do projeto
+- resumo-projeto.ipynb
 
 originalDataset:
 - grade-fotos.csv: arquivo de metadados gerado por "resumo-projeto.ipynb"
