@@ -5,4 +5,6 @@
 .Rhistory
 .RData
 .Ruserdata
-/fotos-originais/*
+/originalDataset/*.jpg
+/originalGrayDataset/*.jpg
+/augmentedDataset/*.jpg
