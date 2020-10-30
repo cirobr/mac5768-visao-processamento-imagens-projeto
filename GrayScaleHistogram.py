@@ -3,7 +3,7 @@ Disciplina: MAC5768
 Data......: 08/10/2020 
 Aluno.....: Josilton / Ciro 
 Objetivo..: Ler um conjunto de arquivos com imagens, transformar
-            GrayScale e gerar e apresentar um histograma das imagens.
+            GrayScale e apresentar um histograma das imagens.
 ================================================================'''
 import os
 import numpy as np
