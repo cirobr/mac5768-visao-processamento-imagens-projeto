@@ -58,8 +58,6 @@ for e in glob.glob("*.jpg"):
             original = mpimg.imread(e)
             grayscale = rgb2gray(original)
             sImg = np.chararray.sum(grayscale)
-            io.imshow(sImg)
-            io.show()
             print('img_copo :',e)
        
   
