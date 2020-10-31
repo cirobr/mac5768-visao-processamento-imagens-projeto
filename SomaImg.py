@@ -52,13 +52,11 @@ os.chdir(pasta)
 
 # separa as imagens apartir do metadado de classe 
 grayscale=[]
-sOma = []
 for e in glob.glob("*.jpg"):
     for a in img_copo:
         if e == a:
             original = mpimg.imread(e)
             grayscale = rgb2gray(original)
-            sOma = appe
             sImg = np.chararray.sum(grayscale)
             io.imshow(sImg)
             io.show()
