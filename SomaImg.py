@@ -49,7 +49,7 @@ for i in Df_imgtest:
 #Informar o caminho da pasta que estão as fotos.
 pasta = 'fotos-teste'
 os.chdir(pasta)
-
+ 
 # separa as imagens apartir do metadado de classe 
 grayscale=[]
 for e in glob.glob("*.jpg"):
