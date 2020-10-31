@@ -59,6 +59,9 @@ for e in glob.glob("*.jpg"):
             grayscale = rgb2gray(original)
             sImg.append(grayscale)
             print('img_copo :',e)
+
+sImg = np.sum(sImg, axis=0) / len(sImg)
+
 """       
   
 for e in glob.glob("*.jpg"):
