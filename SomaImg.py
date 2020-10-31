@@ -51,15 +51,15 @@ pasta = 'fotos-teste'
 os.chdir(pasta)
  
 # separa as imagens apartir do metadado de classe 
-grayscale=[]
+sImg = []
 for e in glob.glob("*.jpg"):
     for a in img_copo:
         if e == a:
             original = mpimg.imread(e)
             grayscale = rgb2gray(original)
-            sImg = np.chararray.sum(grayscale)
+            sImg.append(grayscale)
             print('img_copo :',e)
-       
+"""       
   
 for e in glob.glob("*.jpg"):
     for a in img_caneca:
@@ -83,3 +83,4 @@ for e in glob.glob("*.jpg"):
             original = mpimg.imread(e)
             grayscale = rgb2gray(original)
             print('img_chave: ',e)
+"""
