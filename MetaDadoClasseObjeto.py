@@ -2,7 +2,7 @@
 Disciplina: MAC5768 
 Data......: 26/10/2020 
 Aluno.....: Josilton / Ciro 
-Objetivo..: Ler o metado das imagens, faz uma divisão por 
+Objetivo..: Ler o metadados das imagens, fazer uma divisão por 
             classe de imagens.
 ================================================================'''
 
