@@ -6,9 +6,10 @@ Created on Sun Oct 25 00:43:17 2020
 """
 
 import os
+import numpy as np
+from scipy.signal import convolve2d as conv2
 from skimage import io
 from skimage.color import rgb2gray
-import numpy as np
 
 # definição de funções de transformação
 def transf_log2(img, c):
@@ -41,6 +42,15 @@ for foto in lista_fotos:
     io.imshow(img_gray)
     io.show()
 
+    # soma de fundo(gradiente) com foto cinza
+    img_grad = np.gradient(img_gray, axis=1)
+    io.imshow(img_grad)
+    io.show()
+    # compor imagem cinza com gradiente
+    img_gray_grad = img_gray + img_grad
+    io.imshow(img_gray_grad)
+    io.show()
+
     # foto log2
     img_log2 = transf_log2(img_gray, c = 1)
     io.imshow(img_log2)
@@ -51,4 +61,10 @@ for foto in lista_fotos:
     io.imshow(img_gama)
     io.show()
     
-    break
+    # média e convolução
+    psf = np.ones((3, 3)) / 9
+    img_conv = conv2(img_gray, psf, 'same')
+    io.imshow(img_gray)
+    io.show()
+
+    #break
