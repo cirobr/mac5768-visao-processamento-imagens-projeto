@@ -67,4 +67,4 @@ for foto in lista_fotos:
     io.imshow(img_gray)
     io.show()
 
-    #break
+    break
