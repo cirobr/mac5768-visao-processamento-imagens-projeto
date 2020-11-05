@@ -1,8 +1,15 @@
-import os
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 25 00:43:17 2020
+
+@author: ciror
+"""
+
 import numpy as np
 from scipy.signal import convolve2d as conv2
 from skimage import io
 from skimage.color import rgb2gray
+import pandas as pd
 
 # definição de funções de transformação
 def transf_grad(img):
@@ -18,20 +25,24 @@ def transf_gama(img, c, gama):
     img2 = c * np.power(img, gama)
     return img2
 
+# leitura dos metadados
+pasta = "./fotos-teste/"
+metafile = "grade_fotos.csv"
+filename = pasta + metafile
+df = pd.read_csv(filename, sep=";")
+print(df, "\n")
 
-#Informar o caminho da pasta que estão as fotos.
-pasta = 'fotos-teste'
-lista_fotos = os.listdir(pasta)
+# filtragem de dados
+df2 = df[(df["objeto"] == "copo")]
+print(df2)
 
-# ler fotos e transformar
 imagem = []
-for foto in lista_fotos:
-    # ler a foto
-    fullname = pasta + '/' + foto
-    imagem.append(io.imread(fullname))
+for f in df2.arquivo:
+    filename = pasta + f
+    imagem.append(io.imread(filename))
 
+for img in imagem:
     # foto original
-    img = imagem[-1]
     io.imshow(img)
     io.show()
 
@@ -40,7 +51,7 @@ for foto in lista_fotos:
     io.imshow(img_gray)
     io.show()
 
-    # soma de fundo(gradiente) com foto cinza
+    # soma de fundo (gradiente) com foto cinza
     img_grad = transf_grad(img_gray)
     io.imshow(img_grad)
     io.show()
@@ -65,4 +76,4 @@ for foto in lista_fotos:
     io.imshow(img_gray)
     io.show()
 
-    break
+    #break
