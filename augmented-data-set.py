@@ -12,6 +12,11 @@ from skimage import io
 from skimage.color import rgb2gray
 
 # definição de funções de transformação
+def transf_grad(img):
+    img_aux = np.gradient(img)
+    img2 = np.sqrt(np.square(img_aux[0]) + np.square(img_aux[1]))
+    return img2
+
 def transf_log2(img, c):
     img2 = c * np.log2(1 + img)
     return img2
@@ -43,7 +48,7 @@ for foto in lista_fotos:
     io.show()
 
     # soma de fundo(gradiente) com foto cinza
-    img_grad = np.gradient(img_gray, axis=1)
+    img_grad = transf_grad(img_gray)
     io.imshow(img_grad)
     io.show()
     # compor imagem cinza com gradiente
