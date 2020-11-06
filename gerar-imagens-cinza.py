@@ -5,8 +5,8 @@ Created on Sun Oct 25 00:43:17 2020
 @author: ciror
 """
 
-import numpy as np
-from scipy.signal import convolve2d as conv2
+#import numpy as np
+#from scipy.signal import convolve2d as conv2
 from skimage import io
 from skimage.color import rgb2gray
 import pandas as pd
