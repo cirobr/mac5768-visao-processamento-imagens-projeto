@@ -6,14 +6,14 @@ from skimage.util import img_as_ubyte
 import pandas as pd
 
 # arquivo de metadados em cores
-pasta1 = "./originalDataset/"
+pasta1 = "./fotos-teste/"
 metafile1 = "grade-fotos.csv"
 filename1 = pasta1 + metafile1
 df = pd.read_csv(filename1, sep=";")
 print(df.head(5), "\n")
 
 # arquivo de metadados em cinza
-pasta2 = "./originalGrayDataset/"
+pasta2 = "./fotos-teste/"
 metafile2 = "grade-cinza.csv"
 filename2 = pasta2 + metafile2
 
@@ -37,6 +37,7 @@ for ind in df.index:
     print(df.loc[ind])
 
     # ler foto colorida para a lista
+    print(df.loc[ind])
     arq1 = df["arquivo"][ind]
     arq1 = fix_jpeg_name(arq1)
     f1 = pasta1 + arq1
