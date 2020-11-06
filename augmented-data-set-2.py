@@ -34,46 +34,51 @@ print(df, "\n")
 
 # filtragem de dados
 df2 = df[(df["objeto"] == "copo")]
-print(df2)
+print(df2, "\n")
 
-imagem = []
-for f in df2.arquivo:
-    filename = pasta + f
-    imagem.append(io.imread(filename))
+cat = ["caneca", "alicate"]
 
-for img in imagem:
-    # foto original
-    io.imshow(img)
-    io.show()
+for c in cat:
+    df2 = df[(df["objeto"] == c)]
 
-    # foto cinza
-    img_gray = rgb2gray(img)
-    io.imshow(img_gray)
-    io.show()
-
-    # soma de fundo (gradiente) com foto cinza
-    img_grad = transf_grad(img_gray)
-    io.imshow(img_grad)
-    io.show()
-    # compor imagem cinza com gradiente
-    img_gray_grad = img_gray + img_grad
-    io.imshow(img_gray_grad)
-    io.show()
-
-    # foto log2
-    img_log2 = transf_log2(img_gray, c = 1)
-    io.imshow(img_log2)
-    io.show()
-
-    # foto exponencial
-    img_gama = transf_gama(img_gray, c = 1, gama = 2)
-    io.imshow(img_gama)
-    io.show()
+    fotos = []
+    for f in df2.arquivo:
+        filename = pasta + f
+        fotos.append(io.imread(filename))
+   
+    for img in fotos:
+        # foto original
+        io.imshow(img)
+        io.show()
     
-    # média e convolução
-    psf = np.ones((3, 3)) / 9
-    img_conv = conv2(img_gray, psf, 'same')
-    io.imshow(img_gray)
-    io.show()
-
-    #break
+        # foto cinza
+        img_gray = rgb2gray(img)
+        io.imshow(img_gray)
+        io.show()
+    
+        # soma de fundo (gradiente) com foto cinza
+        img_grad = transf_grad(img_gray)
+        io.imshow(img_grad)
+        io.show()
+        # compor imagem cinza com gradiente
+        img_gray_grad = img_gray + img_grad
+        io.imshow(img_gray_grad)
+        io.show()
+    
+        # foto log2
+        img_log2 = transf_log2(img_gray, c = 1)
+        io.imshow(img_log2)
+        io.show()
+    
+        # foto exponencial
+        img_gama = transf_gama(img_gray, c = 1, gama = 2)
+        io.imshow(img_gama)
+        io.show()
+        
+        # média e convolução
+        psf = np.ones((3, 3)) / 9
+        img_conv = conv2(img_gray, psf, 'same')
+        io.imshow(img_gray)
+        io.show()
+    
+        #break
