@@ -34,7 +34,7 @@ df2_length = len(df2)
 
 # transformação de fotos cinza
 for ind in df.index:
-    print(df.loc[ind])
+    #print(df.loc[ind])
 
     # ler foto colorida para a lista
     arq1 = df["arquivo"][ind]
@@ -44,6 +44,7 @@ for ind in df.index:
     
     # gerar foto cinza
     img_gray = rgb2gray(img)
+    img_gray = img_as_ubyte(img_gray)   # voltar para níveis 0-255
      
     # nome do arquivo da foto cinza
     arq1 = int(arq1[:-4])
@@ -52,8 +53,7 @@ for ind in df.index:
     f = pasta2 + arq2
     
     # salvar foto cinza
-    img_gray2 = img_as_ubyte(img_gray)
-    io.imsave(f, img_gray2)
+    io.imsave(f, img_gray)
      
     # gravar dados da foto cinza no dataframe
     l = [df.sequencia[ind], df.objeto[ind], df.tipo_obj[ind], df.fundo[ind], df.iluminacao[ind], "cinza", df.responsavel[ind], arq2]
