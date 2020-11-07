@@ -28,14 +28,14 @@ def fix_jpeg_name(arq):
 
 
 # arquivo de metadados em cinza
-pasta1 = "./fotos-teste/"
+pasta1 = "./originalGrayDataset/"
 metafile1 = "grade-cinza.csv"
 filename1 = pasta1 + metafile1
 df = pd.read_csv(filename1, sep=";")
 print(df.head(5), "\n")
 
 # arquivo de metadados aumentados
-pasta2 = "./fotos-teste/"
+pasta2 = "./augmentedDataset/"
 metafile2 = "grade-augmented.csv"
 filename2 = pasta2 + metafile2
 
@@ -52,10 +52,9 @@ n = int(n)
 
 # transformação de fotos cinza
 for ind in df.index:
-    print(df.loc[ind])
+    #print(df.loc[ind])
 
     # ler foto cinza
-    print(df.loc[ind])
     arq1 = df["arquivo"][ind]
     arq1 = fix_jpeg_name(arq1)
     f1 = pasta1 + arq1
