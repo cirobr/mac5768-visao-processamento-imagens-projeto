@@ -15,11 +15,12 @@ from skimage import io
 from skimage.color import rgb2gray
 import numpy as np
 import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
 
 #Estrutura da pasta no GuitHub
 pasta = 'fotos-teste'
-f = 'grade_fotos.csv'
-#f = 'grade-fotos.csv'
+#f = 'grade_fotos.csv'
+f = 'grade-fotos.csv'
 fullname = pasta+'/'+f
 
 #===================================================
@@ -70,19 +71,18 @@ for e in glob.glob("*.jpg"):
             grayscale = rgb2gray(original)
             sImg_Copo.append(grayscale)
             print('img_copo :',e)                        # Mostra os arquivos que serão agrupados
-
-#===================================================
-# Obtem a soma e a média das imagens copo
-#===================================================
-Soma_copo = np.sum(sImg_Copo, axis=0)                    # Soma da imagens
-Media_copo = np.sum(sImg_Copo, axis=0) / len(sImg_Copo)  # Media das imagens
-
-io.imshow(Soma_copo)
-io.show()
-io.imshow(Media_copo)
-io.show()
-
-       
+            # Obtem a soma e a média das imagens copo
+            Soma_copo = np.sum(sImg_Copo, axis=0)                    # Soma da imagens
+            Media_copo = np.sum(sImg_Copo, axis=0) / len(sImg_Copo)  # Media das imagens
+        
+            io.imshow(Soma_copo)
+            io.show()
+            io.imshow(Media_copo)
+            io.show()
+            
+            plt.hist(Media_copo.ravel(), bins=256, range=(0.0,1.0), fc='k', ec='k')
+            plt.show()
+            
 #=======================================================
 # Separa os objetos caneca comparando com o Metadado
 # Gera imagem grayScale
@@ -97,18 +97,17 @@ for e in glob.glob("*.jpg"):
             grayscale = rgb2gray(original)
             sImg_Caneca.append(grayscale)
             print('img_caneca: ',e)
-
-#===================================================
-# Obtem a soma e a média das imagens caneca
-#===================================================
-Soma_caneca = np.sum(sImg_Caneca, axis=0)                      # Soma da imagens
-Media_caneca = np.sum(sImg_Caneca, axis=0) / len(sImg_Caneca)  # Media das imagens
-
-io.imshow(Soma_caneca)
-io.show()
-io.imshow(Media_caneca)
-io.show()
-
+            # Obtem a soma e a média das imagens caneca
+            Soma_caneca = np.sum(sImg_Caneca, axis=0)                      # Soma da imagens
+            Media_caneca = np.sum(sImg_Caneca, axis=0) / len(sImg_Caneca)  # Media das imagens
+            
+            io.imshow(Soma_caneca)
+            io.show()
+            io.imshow(Media_caneca)
+            io.show()
+            # Plota o histograma das imagens
+            plt.hist(Media_caneca.ravel(), bins=256, range=(0.0,1.0), fc='k', ec='k')
+            plt.show()
 #=======================================================
 # Separa os objetos alicate comparando com o Metadado
 # Gera imagem grayScale
@@ -123,18 +122,17 @@ for e in glob.glob("*.jpg"):
             grayscale = rgb2gray(original)
             sImg_alicate.append(grayscale)
             print('img_alicate: ',e)
-
-#===================================================
-# Obtem a soma e a média das imagens alicate
-#===================================================
-Soma_alicate = np.sum(sImg_alicate, axis=0)                       # Soma da imagens
-Media_alicate = np.sum(sImg_alicate, axis=0) / len(sImg_alicate)  # Media das imagens
-
-io.imshow(Soma_alicate)
-io.show()
-io.imshow(Media_alicate)
-io.show()
-
+            # Obtem a soma e a média das imagens alicate
+            Soma_alicate = np.sum(sImg_alicate, axis=0)                       # Soma da imagens
+            Media_alicate = np.sum(sImg_alicate, axis=0) / len(sImg_alicate)  # Media das imagens
+            
+            io.imshow(Soma_alicate)
+            io.show()
+            io.imshow(Media_alicate)
+            io.show()
+            #Histograma da imagem
+            plt.hist(Media_alicate, bins=256, range=(0.0,1.0), fc='k', ec='k')
+            plt.show()
 #=======================================================
 # Separa os objetos chave comparando com o Metadado
 # Gera imagem grayScale
@@ -148,14 +146,14 @@ for e in glob.glob("*.jpg"):
             grayscale = rgb2gray(original)
             sImg_chave.append(grayscale)
             print('img_chave: ',e)
-
-#===================================================
-# Obtem a soma e a média das imagens chave
-#===================================================
-Soma_chave = np.sum(sImg_chave, axis=0)                     # Soma da imagens
-Media_chave = np.sum(sImg_chave, axis=0) / len(sImg_chave)  # Media das imagens
-
-io.imshow(Soma_chave)
-io.show()
-io.imshow(Media_chave)
-io.show()
+            # Obtem a soma e a média das imagens chave
+            Soma_chave = np.sum(sImg_chave, axis=0)                     # Soma da imagens
+            Media_chave = np.sum(sImg_chave, axis=0) / len(sImg_chave)  # Media das imagens
+            
+            io.imshow(Soma_chave)
+            io.show()
+            io.imshow(Media_chave)
+            io.show()
+            #plota o histograma da imagem
+            plt.hist(Media_chave.ravel(), bins=256, range=(0.0,1.0), fc='k', ec='k')
+            plt.show()
