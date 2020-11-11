@@ -1,10 +1,7 @@
 import numpy as np
-from scipy.signal import convolve2d as conv2
 from skimage import io
-#from skimage.color import rgb2gray
-#from skimage.util import img_as_ubyte
+from scipy.signal import convolve2d as conv2
 import pandas as pd
-
 
 # definição de funções de transformação
 def transf_grad(img):
@@ -82,7 +79,7 @@ for ind in df.index:
     ### foto log2
     ###
     img_log2 = transf_log2(img_gray, c = 1)
-    #img_log2 = img_log2.astype(np.uint8)
+    img_log2 = img_log2.astype(np.uint8)
     
     # nome de arquivo da foto gerada
     n += 1
@@ -99,6 +96,7 @@ for ind in df.index:
     ### foto exponencial
     ###
     img_gama = transf_gama(img_gray, c = 1, gama = 2)
+    img_gama = img_gama.astype(np.uint8)
 
     # nome de arquivo da foto gerada
     n += 1
@@ -130,6 +128,9 @@ for ind in df.index:
     l = [df.sequencia[ind], df.objeto[ind], df.tipo_obj[ind], df.fundo[ind], df.iluminacao[ind], "conv", df.responsavel[ind], arq2]
     df2.loc[n] = l
     
+    # roda o loop apenas uma vez
+    #break
+
 # salvar metadados aumentados
 print(df2.head(5), "\n")
 df2.to_csv(filename2, index = False, header=True, sep=";")

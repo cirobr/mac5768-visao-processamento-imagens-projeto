@@ -1,8 +1,5 @@
 import numpy as np
-#from scipy.signal import convolve2d as conv2
 from skimage import io
-#from skimage.color import rgb2gray
-#from skimage.util import img_as_ubyte
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -56,9 +53,9 @@ for i in range(len(classes)):
         Im = np.divide(I0, n)
     else:
         Im = np.divide(I1, n)
-    
-    # gravar imagem média em um vetor
-    
+
+    Im = Im.astype(np.uint8)
+   
     # apresentar Im
     io.imshow(Im)
     io.show()
@@ -67,5 +64,5 @@ for i in range(len(classes)):
     plt.hist(Im.ravel(), np.linspace(0, 255, 256))
     plt.show()
 
-    # break de testes, calcula apenas a primeira classe. comentar para processar toda a base.
-    break
+    # roda o loop apenas uma vez
+    #break

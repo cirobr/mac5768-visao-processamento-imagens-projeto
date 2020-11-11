@@ -1,5 +1,4 @@
-#import numpy as np
-#from scipy.signal import convolve2d as conv2
+import numpy as np
 from skimage import io
 from skimage.color import rgb2gray
 from skimage.util import img_as_ubyte
@@ -44,8 +43,9 @@ for ind in df.index:
     
     # gerar foto cinza
     img_gray = rgb2gray(img)
-    img_gray = img_as_ubyte(img_gray)   # voltar para níveis 0-255
-     
+    img_gray2 = img_as_ubyte(img_gray)      # muda a representação de [-1, 1] para [0, 255]
+    #img_gray3 = img_gray.astype(np.uint8)   # "arredonda" para inteiro entre [0, 255]
+         
     # nome do arquivo da foto cinza
     arq1 = int(arq1[:-4])
     arq2 = arq1 + n
@@ -53,12 +53,15 @@ for ind in df.index:
     f = pasta2 + arq2
     
     # salvar foto cinza
-    io.imsave(f, img_gray)
+    io.imsave(f, img_gray2)
      
     # gravar dados da foto cinza no dataframe
     l = [df.sequencia[ind], df.objeto[ind], df.tipo_obj[ind], df.fundo[ind], df.iluminacao[ind], "cinza", df.responsavel[ind], arq2]
     df2.loc[df2_length] = l
     df2_length += 1
+    
+    # roda o loop apenas uma vez
+    #break
 
 # salvar metadados em cinza
 print(df2.head(5), "\n")
