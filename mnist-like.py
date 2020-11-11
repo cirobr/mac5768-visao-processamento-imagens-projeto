@@ -1,4 +1,3 @@
-#import numpy as np
 from skimage import io
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -30,35 +29,21 @@ ilum = "indoor dia"
 
 df = df[(df.sequencia == seq) &
         (df.tipo_obj == tipo) &
-         (df.fundo == fundo) &
-         (df.iluminacao == ilum)]
-#print(df, "\n")
+        (df.fundo == fundo) &
+        (df.iluminacao == ilum)]
 
 df = df.sort_values(by=["tipo_obj", "objeto"])
 classes.sort()
-#print(df, "\n")
 
 fotos = []
 for ind in df.index:
     arq = df["arquivo"][ind]
     arq = fix_jpeg_name(arq)
     f = pasta + arq
-    #print(df["objeto"][ind], f)
  
     # ler foto
     img = io.imread(f)
-    """
-    if img.shape not in s:
-        img = np.transpose(img, axes=(1, 0, 2))
-    """
     fotos.append(img)
-    
-    """
-    # apresentar foto
-    io.imshow(img)
-    io.show()
-    """
-    #break
 
 # plotagem de fotos "mnist-like"
 plt.close("all")

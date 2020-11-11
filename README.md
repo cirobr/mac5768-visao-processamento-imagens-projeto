@@ -11,7 +11,8 @@ Equipe:
 Pastas e Arquivos EP1
 =====================
 Descritivo do projeto
-- resumo-projeto.ipynb
+- resumo-projeto.ipynb: Geração de grade contendo metadados de fotos tiradas
+- mnist-like.ipynb: Ilustração em formato 2 x 5 contendo as 10 classes (objetos) cuhas fotos foram tiradas
 
 originalDataset:
 - grade-fotos.csv: arquivo de metadados gerado por "resumo-projeto.ipynb".
@@ -20,4 +21,6 @@ originalDataset:
 
 Pastas e Arquivos EP2
 =====================
-Em construção.
+originalGrayDataset
+augmentedDataset
+augmented-dataset.ipynb: geração de dataset "cinza" e "aumentado" a partir das fotos originais
