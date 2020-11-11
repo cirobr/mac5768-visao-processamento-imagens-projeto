@@ -21,4 +21,4 @@ grade <- grade %>% mutate(responsavel = ifelse(objeto %in% classes[1:5],
                                                "Ciro"),
                           arquivo = paste(row_number(), ".jpg"))
 head(grade)
-write_excel_csv2(grade, "grade-fotos.csv")
+#write_excel_csv2(grade, "grade-fotos.csv")
