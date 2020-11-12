@@ -18,15 +18,18 @@ filename2 = pasta2 + "/" + metafile2
 
 # normalização de fotos
 lista_fotos = os.listdir(pasta1)
-for foto in lista_fotos:
+for nome_foto in lista_fotos:
+    
+    if ".csv" in nome_foto:
+        continue
 
-    fullname1 = pasta1 + '/' + foto
+    fullname1 = pasta1 + '/' + nome_foto
     img = io.imread(fullname1)
     img_norm = exposure.equalize_hist(img, nbins = 256)
     img_norm2 = img_as_ubyte(img_norm)
     
     # salvar foto gerada
-    fullname2 = pasta2 + '/' + foto
+    fullname2 = pasta2 + '/' + nome_foto
     io.imsave(fullname2, img_norm2)
 
     # roda o loop apenas uma vez
