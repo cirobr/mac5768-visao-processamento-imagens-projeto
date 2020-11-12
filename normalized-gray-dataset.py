@@ -11,14 +11,13 @@ pasta1 = "originalGrayDataset"
 metafile1 = "grade-cinza.csv"
 filename1 = pasta1 + "/" + metafile1
 
-lista_fotos = os.listdir(pasta1)
-
 # arquivo de saída normalizada
 pasta2 = "normalizedGrayDataset"
 metafile2 = "grade-cinza-normalized.csv"
 filename2 = pasta2 + "/" + metafile2
 
 # normalização de fotos
+lista_fotos = os.listdir(pasta1)
 for foto in lista_fotos:
 
     fullname1 = pasta1 + '/' + foto

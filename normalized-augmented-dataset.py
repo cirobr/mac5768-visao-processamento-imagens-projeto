@@ -39,7 +39,7 @@ print(df.head(5), "\n")
 
 df2 = pd.DataFrame(df)
 for ind in df2.index:
-    df2.transformacao = "normalized cinza"
+    df2.transformacao = "normalized augmented"
 print(df2.head(5), "\n")
 df2.to_csv(filename2, index = False, header=True, sep=";")
 
