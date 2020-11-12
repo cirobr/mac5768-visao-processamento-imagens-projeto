@@ -9,3 +9,5 @@
 /originalGrayDataset/*.jpg
 /augmentedDataset/*.jpg
 /averageGrayPicture/*.jpg
+/normalizedGrayDataset/*.jpg
+/normalizedAugmentedDataset/*.jpg
