@@ -11,10 +11,18 @@ def fix_jpeg_name(arq):
 
 
 # ler arquivo de metadados aumentados
-pasta = "./augmentedDataset/"
-metafile = "grade-augmented.csv"
-filename = pasta + metafile
-df = pd.read_csv(filename, sep=";")
+p1 = "./augmentedDataset/"
+m1 = "grade-augmented.csv"
+f1 = p1 + m1
+df = pd.read_csv(f1, sep=";")
+
+# pasta de imagens e histogramas médios
+p2 = "./averageGrayPicture/"
+m2 = "grade-avg-gray-pic.csv"
+f2 = p2 + m2
+
+df2=pd.DataFrame(data=None, columns=("tipo_obj", "arquivo"))
+#df2_length = len(df2)
 
 # dimensões das fotos
 s = [(3096, 4128), (2608, 4640)]
@@ -26,8 +34,8 @@ classes = ["garfo", "faca", "colher", "copo", "caneca", "alicate", "chave", "can
 for i in range(len(classes)):
 
     # filtrar df para a classe sob análise
-    df2 = df[df.objeto == classes[i]]
-    print(df2.head(5), "\n")
+    dfx = df[df.objeto == classes[i]]
+    print(dfx.head(5), "\n")
     
     # criar matriz de soma de fotos
     I0 = np.zeros(s[0])
@@ -35,9 +43,9 @@ for i in range(len(classes)):
 
     # calcular foto média
     n = 0
-    for arq in df2.arquivo:
+    for arq in dfx.arquivo:
         arq = fix_jpeg_name(arq)
-        f = pasta + arq
+        f = p1 + arq
         img = io.imread(f)
         n += 1
 
@@ -55,7 +63,14 @@ for i in range(len(classes)):
         Im = np.divide(I1, n)
 
     Im = Im.astype(np.uint8)
-   
+    
+    # nome do arquivo da foto média
+    arqx = classes[i] + "-foto-media" + ".jpg"
+    fx = p2 + arqx
+    
+    # salvar foto média
+    io.imsave(fx, Im)
+    
     # apresentar Im
     io.imshow(Im)
     io.show()
@@ -64,5 +79,13 @@ for i in range(len(classes)):
     plt.hist(Im.ravel(), np.linspace(0, 255, 256))
     plt.show()
 
+    # gravar dados da foto média no dataframe
+    l = [classes[i], arqx]
+    df2.loc[i] = l
+    
     # roda o loop apenas uma vez
     #break
+
+# salvar metadados de fotos médias
+print(df2, "\n")
+df2.to_csv(f2, index = False, header=True, sep=";")

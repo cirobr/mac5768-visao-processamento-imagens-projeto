@@ -8,3 +8,4 @@
 /originalDataset/*.jpg
 /originalGrayDataset/*.jpg
 /augmentedDataset/*.jpg
+/averageGrayPicture/*.jpg
