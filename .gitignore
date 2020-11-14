@@ -8,6 +8,9 @@
 /originalDataset/*.jpg
 /originalGrayDataset/*.jpg
 /augmentedDataset/*.jpg
-/averageGrayPicture/*.jpg
 /normalizedGrayDataset/*.jpg
 /normalizedAugmentedDataset/*.jpg
+/averageGrayDataset/*.jpg
+/averageAugmentedDataset/*.jpg
+/averageNormalizedGrayDataset/*.jpg
+/averageNormalizedAugmentedDataset/*.jpg

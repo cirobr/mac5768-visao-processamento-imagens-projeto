@@ -1,5 +1,4 @@
 import os
-#import numpy as np
 from skimage import io
 from skimage import exposure
 from skimage.util import img_as_ubyte
@@ -33,7 +32,7 @@ for nome_foto in lista_fotos:
     io.imsave(fullname2, img_norm2)
 
     # roda o loop apenas uma vez
-    #break
+    break
     
 # gerar metadados normalizados
 df = pd.read_csv(filename1, sep=";")
