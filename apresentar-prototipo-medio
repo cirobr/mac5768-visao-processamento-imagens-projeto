@@ -1,0 +1,11 @@
+import numpy as np
+from skimage import io
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# ler arquivo de metadados
+p2 = "./averageGrayPicture/"
+m2 = "grade-avg-gray-pic.csv"
+f2 = p2 + m2
+df = pd.read_csv(f2, sep=";")
+

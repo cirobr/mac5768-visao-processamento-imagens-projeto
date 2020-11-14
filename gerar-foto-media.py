@@ -17,8 +17,8 @@ f1 = p1 + m1
 df = pd.read_csv(f1, sep=";")
 
 # pasta de imagens e histogramas médios
-p2 = "./averageGrayPicture/"
-m2 = "grade-avg-gray-pic.csv"
+p2 = "./averageAugmentedDataset/"
+m2 = "grade-avg-augmented.csv"
 f2 = p2 + m2
 
 df2=pd.DataFrame(data=None, columns=("tipo_obj", "arquivo"))
