@@ -14,7 +14,7 @@ Pastas e Arquivos EP1
 - mnist-like.ipynb: Ilustração em formato 2 x 5 contendo as 10 classes (objetos) cuhas fotos foram tiradas
 
 originalDataset:
-- grade-fotos.csv: arquivo de metadados gerado por "resumo-projeto.ipynb".
+- grade.csv: arquivo de metadados gerado por "resumo-projeto.ipynb".
 - Para execução em PC local, deve conter também as fotos do dataset original.
 - Download do dataset original em: https://drive.google.com/open?id=13HaOI0t01PfVSvHIRkNJ9nU0mDoPYpdW&authuser=ciro.rosa%40alumni.usp.br&usp=drive_fs
 
