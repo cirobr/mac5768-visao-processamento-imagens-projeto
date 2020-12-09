@@ -8,8 +8,7 @@ import matplotlib.pyplot as plt
 
 
 # arquivo de entrada em cinza
-#pasta1 = './fotos-teste'
-pasta1 = "./augmentedDataset"
+pasta1 = "./originalGrayDataset"
 lista_fotos = os.listdir(pasta1)
 
 i = 0

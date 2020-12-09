@@ -14,3 +14,6 @@
 /averageAugmentedDataset/*.jpg
 /averageNormalizedGrayDataset/*.jpg
 /averageNormalizedAugmentedDataset/*.jpg
+/thresholdOtsu/*.jpg
+/thresholdYen/*.jpg
+
