@@ -1,11 +1,16 @@
 import os
-from skimage import io, img_as_ubyte
+from skimage import io
 from skimage.filters import threshold_otsu, threshold_yen
 import matplotlib.pyplot as plt
 
+# extrair sufixo do arquivo
+def sufixo(arq):
+    suf = arq[-4:]
+    return suf
 
 # arquivo de entrada em cinza
 pasta1 = "./originalGrayDataset"
+#pasta1 = "./fotos-teste"
 lista_fotos = os.listdir(pasta1)
 
 # arquivos de saída de fotos após threshold
@@ -13,6 +18,9 @@ pasta2 = "./thresholdOtsu"
 pasta3 = "./thresholdYen"
 
 for foto in lista_fotos:
+    if sufixo(foto) != ".jpg":
+        continue
+
     fullname1 = pasta1 + '/' + foto
     print(fullname1)
     img = io.imread(fullname1)
