@@ -26,6 +26,7 @@ seed = 1
 df2 = df2.sample(n=sample_size, 
                  replace=False, 
                  random_state=seed)
+df2.transformacao = "seg manual"
 
 # copiar fotos para processamento manual
 pasta2 = "./manualThresholdDataset/"

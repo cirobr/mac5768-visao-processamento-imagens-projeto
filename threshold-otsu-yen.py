@@ -2,6 +2,7 @@ import os
 from skimage import io
 from skimage.filters import threshold_otsu, threshold_yen
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # extrair sufixo do arquivo
 def sufixo(arq):
@@ -9,19 +10,24 @@ def sufixo(arq):
     return suf
 
 # arquivo de entrada em cinza
-pasta1 = "./originalGrayDataset"
-#pasta1 = "./fotos-teste"
+pasta1 = "./originalGrayDataset/"
 lista_fotos = os.listdir(pasta1)
 
+# ler metadados em cinza
+metafile1 = "grade.csv"
+filename1 = pasta1 + metafile1
+df1 = pd.read_csv(filename1, sep=";")
+print(df1.head(5), "\n")
+
 # arquivos de saída de fotos após threshold
-pasta2 = "./thresholdOtsu"
-pasta3 = "./thresholdYen"
+pasta2 = "./thresholdOtsu/"
+pasta3 = "./thresholdYen/"
 
 for foto in lista_fotos:
     if sufixo(foto) != ".jpg":
         continue
 
-    fullname1 = pasta1 + '/' + foto
+    fullname1 = pasta1 + foto
     print(fullname1)
     img = io.imread(fullname1)
     
@@ -53,9 +59,30 @@ for foto in lista_fotos:
     io.show()
     
     # gravação das imagens
-    f2 = pasta2 + "/" + foto
+    f2 = pasta2 + foto
     io.imsave(f2, binary2)
     
-    f3 = pasta3 + "/" + foto
+    f3 = pasta3 + foto
     io.imsave(f3, binary3)
-    #break
+    break
+
+# gravar metadados
+df2 = df1
+df2.transformacao = "seg otsu"
+metafile2 = metafile1
+filename2 = pasta2 + metafile2
+df2.to_csv(filename2, 
+           index = False, 
+           header=True, 
+           sep=";")
+print(df2.head(5), "\n")
+
+df3 = df1
+df3.transformacao = "seg yen"
+metafile3 = metafile1
+filename3 = pasta3 + metafile3
+df3.to_csv(filename3, 
+           index = False, 
+           header=True, 
+           sep=";")
+print(df3.head(5), "\n")
