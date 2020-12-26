@@ -16,4 +16,5 @@
 /averageNormalizedAugmentedDataset/*.jpg
 /thresholdOtsu/*.jpg
 /thresholdYen/*.jpg
-
+/manualThresholdDataset/*.jpg
+/manualThresholdDataset (copy)
