@@ -23,9 +23,9 @@ df2 = df1[filtro]
 
 # sortear amostra aleatoria para processamento manual
 seed = 1
-df2 = df2.sample(n=sample_size, 
-                 replace=False, 
-                 random_state=seed)
+df2 = df2.sample(n            = sample_size, 
+                 replace      = False, 
+                 random_state = seed)
 df2.transformacao = "seg manual"
 
 # copiar fotos para processamento manual
@@ -33,9 +33,9 @@ pasta2 = "./manualThresholdDataset/"
 metafile2 = "grade.csv"
 filename2 = pasta2 + metafile2
 df2.to_csv(filename2, 
-           index = False, 
-           header=True, 
-           sep=";")
+           index  = False, 
+           header = True, 
+           sep    = ";")
 
 for ind in df2.index:
     arq1 = df2["arquivo"][ind]
@@ -47,4 +47,5 @@ for ind in df2.index:
     f2 = pasta2 + arq2
     io.imsave(f2, img)
     #break
+    
 print(df2.head(5), "\n")
