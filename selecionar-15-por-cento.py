@@ -26,7 +26,7 @@ classes = df_temp1["objeto"].unique()
 df2 = pd.DataFrame(data = None, columns = df1.columns)
 
 for classe in classes:
-    # selecionar classe
+    # selecionar classe de objeto
     filtro = (df_temp1.objeto == classe)
     df_temp2 = df_temp1[filtro]
     
@@ -39,10 +39,11 @@ for classe in classes:
     # adicionar df_temp2 a df2
     df2 = df2.append(df_temp2, ignore_index=True)
 
+# renomeia o tipo de transformação
 df2.transformacao = "seg manual"
 
 # copiar fotos para processamento manual
-pasta2 = "./manualThresholdDataset/"
+pasta2 = "./thresholdManual/"
 metafile2 = "grade.csv"
 filename2 = pasta2 + metafile2
 df2.to_csv(filename2, 
