@@ -23,7 +23,6 @@ for foto in lista_fotos:
     # processamento/melhoria da segmentação
     img_dilat   = binary_dilation(img)
     img_erosion = binary_erosion(img_dilat)
-    #img_cleared = clear_border(img, bgval=1)   # não funcionou bem
     
     # imagem final para rótulo
     img2 = img_erosion
@@ -40,7 +39,7 @@ for foto in lista_fotos:
 
     # gerar feret boxes
     for r in regions:
-        if r.area <= 2000:
+        if r.area <= 2000:                 # filtro de pequenos artefatos
             continue
 
         minr, minc, maxr, maxc = r.bbox

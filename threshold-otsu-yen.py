@@ -64,7 +64,7 @@ for foto in lista_fotos:
     
     f3 = pasta3 + foto
     io.imsave(f3, binary3)
-    break
+    #break
 
 # gravar metadados
 df2 = df1
