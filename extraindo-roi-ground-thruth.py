@@ -39,7 +39,7 @@ for foto in lista_fotos:
 
     # gerar feret boxes
     for r in regions:
-        if r.area <= 2000:                 # filtro de pequenos artefatos
+        if r.area <= 2000:                  # filtro de pequenos artefatos
             continue
 
         minr, minc, maxr, maxc = r.bbox
