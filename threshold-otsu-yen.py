@@ -1,5 +1,5 @@
 import os
-from skimage import io
+from skimage import io, img_as_ubyte
 from skimage.filters import threshold_otsu, threshold_yen
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -28,22 +28,23 @@ for foto in lista_fotos:
         continue
 
     fullname1 = pasta1 + foto
-    print(fullname1)
     img = io.imread(fullname1)
     
     # threshold Otsu
     thresh2 = threshold_otsu(img)
     binary2 = img > thresh2
+    binary2 = img_as_ubyte(binary2)
 
     # threshold Yen    
     thresh3 = threshold_yen(img)
     binary3 = img > thresh3
+    binary3 = img_as_ubyte(binary3)
     
     # plotagem de fotos "mnist-like"
     plt.close("all")
     f, ax = plt.subplots(1, 3, figsize=(10, 10))
 
-    ax[0].set_title("originalGray")
+    ax[0].set_title("originalGrayDataset")
     ax[0].set(xticks=[], yticks=[])
     ax[0].imshow(img, cmap=plt.cm.gray)
 

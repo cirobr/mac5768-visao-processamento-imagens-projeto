@@ -11,7 +11,6 @@ lista_fotos = os.listdir(pasta1)
 i = 0
 for foto in lista_fotos:
     fullname1 = pasta1 + foto
-    print(fullname1)
     img = io.imread(fullname1)
     fig, ax = try_all_threshold(img, figsize=(10, 8), verbose=False)
     plt.show()
