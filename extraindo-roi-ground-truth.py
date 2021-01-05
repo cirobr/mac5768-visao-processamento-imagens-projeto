@@ -12,9 +12,10 @@ def fix_jpeg_name(arq):
 
 # ler metadados segmentação manual
 pasta1 = "./thresholdManual/"
+pasta1 = "./fotos-teste/"
 metafile1 = "grade.csv"
 filename1 = pasta1 + metafile1
-df1 = pd.read_csv(filename1, sep=";")
+df1 = pd.read_csv(filename1, sep=",")
 print(df1.head(5), "\n")
 
 # pasta de gravação de fotos bbox
@@ -69,7 +70,7 @@ for classe in classes:
         img2sub = img2[minr:maxr, minc:maxc]
         ax[1].imshow(img2sub, cmap=plt.cm.gray)
         ax[1].set(xticks=[], yticks=[])
-        ax[1].set_title("Feret Box ampliada")
+        ax[1].set_title("Feret Box")
     
         # mostrar imagens
         plt.tight_layout()
