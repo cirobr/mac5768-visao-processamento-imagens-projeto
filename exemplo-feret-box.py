@@ -30,7 +30,8 @@ for props in regions:
     minr, minc, maxr, maxc = props.bbox
     bx = (minc, maxc, maxc, minc, minc)
     by = (minr, minr, maxr, maxr, minr)
-    ax.plot(bx, by, '-b', linewidth=2.5)
+    ax.plot(bx, by, '-r', linewidth=2.5)
+    #break
 
-#ax.axis((0, 600, 600, 0))
+ax.axis((0, 600, 600, 0))
 plt.show()
