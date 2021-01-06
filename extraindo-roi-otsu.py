@@ -47,22 +47,42 @@ for classe in classes:
         # label image regions
         img_label = label(img2, background=1)   # background=1 (fundo branco)
         regions = regionprops(img_label)
-
-        # identificar região com máxima área e usá-la como feature
-        area_region = [r.area for r in regions]
-        max_value = max(area_region)
-        max_index = area_region.index(max_value)
+        
+        # identificar região com máxima área e usá-la como ROI
+        area_regions = [r.area for r in regions]
+        max_value = max(area_regions)
+        max_index = area_regions.index(max_value)
         r = regions[max_index]
     
-        # gerar e plotar feret boxes
+        """
+        # plotagem de fotos identificadas
+        plt.close("all")
+        f, ax = plt.subplots(1, 2, figsize=(10, 10))
+        ax[0].imshow(img2, cmap=plt.cm.gray)
+        ax[0].set(xticks=[], yticks=[])
+        ax[0].set_title("thresholdManual + Feret Box")
+        """
+        # gerar e plotar feret box
         minr, minc, maxr, maxc = r.bbox
         bx = (minc, maxc, maxc, minc, minc)
         by = (minr, minr, maxr, maxr, minr)
-        
+        # ax[0].plot(bx, by, '-r', linewidth=1.0)
+
         # gerar sub-imagem dentro do feret box
         img2sub = img2[minr:maxr, minc:maxc]
         img2sub = img_as_ubyte(img2sub)
 
+        """
+        # plotar feret box
+        ax[1].imshow(img2sub, cmap=plt.cm.gray)
+        ax[1].set(xticks=[], yticks=[])
+        ax[1].set_title("Feret Box")
+    
+        # mostrar imagens
+        plt.tight_layout()
+        io.show()
+        """
+        
         # gravação das imagens
         f2 = pasta2 + foto
         io.imsave(f2, img2sub)
