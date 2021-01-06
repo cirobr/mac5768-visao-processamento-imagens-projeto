@@ -1,6 +1,6 @@
 import pandas as pd
 from skimage import io, img_as_ubyte
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from skimage.measure import label, regionprops
 from skimage.morphology import binary_erosion, binary_dilation
 
