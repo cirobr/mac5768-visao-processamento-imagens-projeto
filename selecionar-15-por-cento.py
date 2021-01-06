@@ -43,7 +43,7 @@ for classe in classes:
 df2.transformacao = "seg manual"
 
 # copiar fotos para processamento manual
-pasta2 = "./thresholdManual/"
+pasta2 = "./thresholdManual-ciro/"
 metafile2 = "grade.csv"
 filename2 = pasta2 + metafile2
 df2.to_csv(filename2, 

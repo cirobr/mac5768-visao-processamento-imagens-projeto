@@ -16,3 +16,5 @@
 /thresholdOtsu/*.jpg
 /thresholdYen/*.jpg
 /bboxManual/*.jpg
+/bboxOtsu/*.jpg
+
