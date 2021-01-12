@@ -72,7 +72,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 n_samples    = len(fotos2)
 n_features   = max_r * max_c
 #n_components = min(22, n_samples, n_features)     # artifício criado por erro na função PCA. precisa conferir.
-n_components = 150
+n_components = 22
 
 pca = PCA(n_components=n_components,
           svd_solver='randomized',
