@@ -1,7 +1,7 @@
+from time import time
 import pandas as pd
 from skimage import io
 from cv2 import resize
-import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
@@ -67,28 +67,47 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 ###
 n_components = 45
 
+print("PCA - Extracting eigenvectors")
+t0 = time()
+
 pca = PCA(n_components=n_components,
           svd_solver='randomized',
           whiten=True).fit(X_train)
+print("done in %0.3fs" % (time() - t0))
 
 eigenfaces = pca.components_.reshape((n_components, d, d))
 
+print("PCA - Projecting to new orthonormal coordinates")
+t0 = time()
+
 X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
+print("done in %0.3fs" % (time() - t0))
 
 
 ### treinar o modelo com SVM
 ###
+print("SVM - Fitting the classifier to the training set")
+t0 = time()
+
 param_grid = {'C': [1e3, 5e3, 1e4, 5e4, 1e5],
               'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1], }
 clf = GridSearchCV(SVC(kernel='rbf',
                        class_weight='balanced'),
                    param_grid)
 clf = clf.fit(X_train_pca, y_train)
+
+print("done in %0.3fs" % (time() - t0))
 print("Best estimator found by grid search:")
 print(clf.best_estimator_)
 
 
 ### avaliar o modelo com o testset
 ###
+print("Predicting classes on the test set")
+t0 = time()
 y_pred = clf.predict(X_test_pca)
+print("done in %0.3fs" % (time() - t0))
+
+print(classification_report(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
