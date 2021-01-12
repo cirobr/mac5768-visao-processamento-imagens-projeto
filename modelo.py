@@ -21,26 +21,22 @@ print(df1.head(5), "\n")
 
 # ler fotos em uma lista
 fotos1 = []
-max_r = 0
-max_c = 0
+#max_r = 0
+#max_c = 0
 for foto in df1["arquivo"]:
     fullname1 = pasta1 + foto
     img1 = io.imread(fullname1)
     fotos1.append(img1)
     
-    # determinar dimensões máximas das imagens
-    if img1.shape[0] > max_r:
-        max_r = img1.shape[0]
-    if img1.shape[1] > max_c:
-        max_c = img1.shape[1]
-new_dim = (max_r, max_c)
-
+d = 100
+dim = (d, d)
 
 # normalizar fotos para dimensão máxima do bbox
-fotos2 = [resize(img1, new_dim) for img1 in fotos1]      # a normalização está sendo feita de forma desproporcional
+fotos2 = [resize(img1, dim) for img1 in fotos1]      # a normalização está sendo feita de forma desproporcional
 
+"""
 ###
-### plotagem de exemplo
+### plotagem do resize
 ###
 plt.close("all")
 f, ax = plt.subplots(1, 2, figsize=(10, 10))
@@ -52,7 +48,7 @@ ax[1].set(xticks=[], yticks=[])
 
 plt.tight_layout()
 io.show()
-
+"""
 
 ### criar arrays de predictors e outcomes
 ###
@@ -69,16 +65,13 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 
 ### calcular PCA
 ###
-n_samples    = len(fotos2)
-n_features   = max_r * max_c
-#n_components = min(22, n_samples, n_features)     # artifício criado por erro na função PCA. precisa conferir.
-n_components = 22
+n_components = 45
 
 pca = PCA(n_components=n_components,
           svd_solver='randomized',
           whiten=True).fit(X_train)
 
-eigenfaces = pca.components_.reshape((n_components, max_r, max_c))   # precisa conferir max_r, max_c
+eigenfaces = pca.components_.reshape((n_components, d, d))
 
 X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
