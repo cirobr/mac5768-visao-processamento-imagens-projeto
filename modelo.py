@@ -74,8 +74,7 @@ pca = PCA(n_components=n_components,
           whiten=True).fit(X_train)
 print("done in %0.3fs" % (time() - t0))
 
-eigenfaces = pca.components_.reshape((n_components, d, d))
-
+eigenfaces = pca.components_.reshape((n_components, d, d))  ### verificar valor para d
 print("PCA - Projecting to new orthonormal coordinates")
 t0 = time()
 
