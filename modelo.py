@@ -100,6 +100,17 @@ print("Best estimator found by grid search:")
 print(clf.best_estimator_)
 
 
+### avaliar o modelo com o trainset
+###
+print("Predicting classes on the train set")
+t0 = time()
+y_pred = clf.predict(X_train_pca)
+print("done in %0.3fs" % (time() - t0))
+
+print(classification_report(y_train, y_pred))
+print(confusion_matrix(y_train, y_pred))
+
+
 ### avaliar o modelo com o testset
 ###
 print("Predicting classes on the test set")
