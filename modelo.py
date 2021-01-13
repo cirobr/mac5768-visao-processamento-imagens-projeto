@@ -1,6 +1,6 @@
 from time import time
 import pandas as pd
-from skimage import io
+from skimage import io, img_as_bool
 import matplotlib.pyplot as plt
 from cv2 import resize
 
@@ -74,7 +74,9 @@ pca = PCA(n_components=n_components,
           whiten=True).fit(X_train)
 print("done in %0.3fs" % (time() - t0))
 
-eigenfaces = pca.components_.reshape((n_components, d, d))  ### verificar valor para d
+h = d
+w = d
+eigenfaces = pca.components_.reshape((n_components, h, w))  ### verificar valor para h, w
 print("PCA - Projecting to new orthonormal coordinates")
 t0 = time()
 
