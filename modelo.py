@@ -1,6 +1,6 @@
 from time import time
 import pandas as pd
-from skimage import io, img_as_bool
+from skimage import io
 import matplotlib.pyplot as plt
 from cv2 import resize
 
@@ -64,7 +64,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 
 ### calcular PCA
 ###
-n_components = 45
+n_components = 52
 
 print("PCA - Extracting eigenvectors")
 t0 = time()
