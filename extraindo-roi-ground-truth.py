@@ -14,7 +14,7 @@ def fix_jpeg_name(arq):
 pasta1 = "./thresholdManual/"
 metafile1 = "grade.csv"
 filename1 = pasta1 + metafile1
-df1 = pd.read_csv(filename1, sep=",")
+df1 = pd.read_csv(filename1, sep=";")
 print(df1.head(5), "\n")
 
 # pasta de gravação de fotos bbox
