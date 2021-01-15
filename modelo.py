@@ -64,7 +64,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 
 ### calcular PCA
 ###
-n_components = 52
+n_components = 110
 
 print("PCA - Extracting eigenvectors")
 t0 = time()

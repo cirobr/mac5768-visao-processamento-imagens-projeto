@@ -4,6 +4,7 @@
 .Rhistory
 .RData
 .Ruserdata
+*.ini
 /originalDataset/*.jpg
 /originalGrayDataset/*.jpg
 /augmentedDataset/*.jpg
@@ -13,6 +14,9 @@
 /averageAugmentedDataset/*.jpg
 /averageNormalizedGrayDataset/*.jpg
 /averageNormalizedAugmentedDataset/*.jpg
+/thresholdManual/*.jpg
+/thresholdManual-ciro/*.jpg
+/thresholdManual-josilton/*.jpg
 /thresholdOtsu/*.jpg
 /thresholdYen/*.jpg
 /bboxManual/*.jpg
