@@ -118,11 +118,6 @@ filename1 = pasta1 + metafile1
 df1 = pd.read_csv(filename1, sep=";")
 #print(df1.head(5), "\n")
 
-"""
-# filtrar apenas as fotos de fundo branco
-filtro = (df1.fundo == "branco")
-df1 = df1[filtro]
-"""
 
 # ler fotos em uma lista
 fotos1 = []
