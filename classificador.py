@@ -1,7 +1,6 @@
 from time import time
 import pandas as pd
 from skimage import io
-import matplotlib.pyplot as plt
 from cv2 import resize
 
 from sklearn.model_selection import train_test_split
@@ -28,10 +27,10 @@ for foto in df1["arquivo"]:
     fotos1.append(img1)
 
     
-# normalizar fotos para dimensão máxima do bbox
+# normalizar fotos para dimensão única
 d = 100
 dim = (d, d)
-fotos2 = [resize(img1, dim) for img1 in fotos1]      # a normalização está sendo feita de forma desproporcional
+fotos2 = [resize(img1, dim) for img1 in fotos1]
 
 
 # criar arrays de predictors e outcomes
@@ -55,15 +54,13 @@ for ind in range(len(fotos1)):
     #break
 """
 
-### dividir os dados em trainset e testset
-###
+# dividir os dados em trainset e testset
 X_train, X_test, y_train, y_test = train_test_split(X,
                                                     y,
                                                     test_size=0.25,
                                                     random_state=42)
 
-### calcular PCA
-###
+# calcular PCA
 n_components = 110
 
 print("PCA - Extracting eigenvectors")
@@ -76,7 +73,7 @@ print("done in %0.3fs" % (time() - t0))
 
 h = d
 w = d
-eigenfaces = pca.components_.reshape((n_components, h, w))  ### verificar valor para h, w
+eigenfaces = pca.components_.reshape((n_components, h, w))
 print("PCA - Projecting to new orthonormal coordinates")
 t0 = time()
 
@@ -85,8 +82,7 @@ X_test_pca = pca.transform(X_test)
 print("done in %0.3fs" % (time() - t0))
 
 
-### treinar o modelo com SVM
-###
+# treinar o modelo com SVM
 print("SVM - Fitting the classifier to the training set")
 t0 = time()
 
@@ -102,19 +98,7 @@ print("Best estimator found by grid search:")
 print(clf.best_estimator_)
 
 
-### avaliar o modelo com o trainset
-###
-print("Predicting classes on the train set")
-t0 = time()
-y_pred = clf.predict(X_train_pca)
-print("done in %0.3fs" % (time() - t0))
-
-print(classification_report(y_train, y_pred))
-print(confusion_matrix(y_train, y_pred))
-
-
-### avaliar o modelo com o testset
-###
+# avaliar o modelo com o testset
 print("Predicting classes on the test set")
 t0 = time()
 y_pred = clf.predict(X_test_pca)
@@ -122,3 +106,69 @@ print("done in %0.3fs" % (time() - t0))
 
 print(classification_report(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
+
+###
+### avaliar o modelo com o dataset "bboxOtsu"
+###
+
+# ler metadados segmentação Otsu
+pasta1 = "./bboxOtsu/"
+metafile1 = "grade.csv"
+filename1 = pasta1 + metafile1
+df1 = pd.read_csv(filename1, sep=";")
+#print(df1.head(5), "\n")
+
+"""
+# filtrar apenas as fotos de fundo branco
+filtro = (df1.fundo == "branco")
+df1 = df1[filtro]
+"""
+
+# ler fotos em uma lista
+fotos1 = []
+for foto in df1["arquivo"]:
+    fullname1 = pasta1 + foto
+    img1 = io.imread(fullname1)
+    fotos1.append(img1)
+
+    
+# normalizar fotos para dimensão única
+d = 100
+dim = (d, d)
+fotos2 = [resize(img1, dim) for img1 in fotos1]
+
+
+# criar arrays de predictors e outcomes
+X = [f2.flatten() for f2 in fotos2]
+y = df1["objeto"]
+
+
+# calcular PCA
+n_components = 110
+
+print("PCA - Extracting eigenvectors")
+t0 = time()
+
+pca = PCA(n_components=n_components,
+          svd_solver='randomized',
+          whiten=True).fit(X)
+print("done in %0.3fs" % (time() - t0))
+
+h = d
+w = d
+eigenfaces = pca.components_.reshape((n_components, h, w))
+print("PCA - Projecting to new orthonormal coordinates")
+t0 = time()
+
+X_pca = pca.transform(X)
+print("done in %0.3fs" % (time() - t0))
+
+
+# avaliar o modelo com o dataset completo bboxOtsu
+print("Predicting classes on bbox Otsu")
+t0 = time()
+y_pred = clf.predict(X_pca)
+print("done in %0.3fs" % (time() - t0))
+
+print(classification_report(y, y_pred))
+print(confusion_matrix(y, y_pred))
