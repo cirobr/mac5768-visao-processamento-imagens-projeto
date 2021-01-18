@@ -29,3 +29,20 @@ originalGrayDataset
 augmentedDataset
 - Transformação das fotos em escala de cinza para um dataset aumentado.
 - Arquivo de metadados associado.
+
+Pastas e Arquivos EP3
+=====================
+- ep3-1-segmentacao-bbox.ipynb: código de segmentação automática (Otsu e Yen), e geração de Feret Boxes
+
+- ep3-2-classificador.ipynb: PCA, Feature Vector e Classificador; predição de classes
+
+threshold Manual
+- Segmentação manual de 15% (= 160) fotos escolhidas aleatoriamente do dataset "originalGrayDataset"
+- Ferramenta para segmentação: Gimp
+
+thresholdOtsu, thresholdYen
+- Segmentação automática de 100% (= 1080) fotos conforme os algoritmos Otsu e Yen da bobloteca Scikit-Image
+
+bboxManual, bboxOtsu
+- Identificação das classes contidas em cada foto com o auxilio de Feret Boxes.
+
