@@ -1,8 +1,9 @@
-# mac5768-projeto
-MAC5768 Projeto de Classe
+# mac5768-visao-processamento-imagens
+MAC 5768 - Visão e Processamento de Imagens
 
-Projeto de classe da disciplina Visão e Processamento de Imagens
-Segundo semestre - 2020
+Segundo Semestre de 2020
+
+Projeto de classe da disciplina
 
 Equipe:
 - Ciro B Rosa
