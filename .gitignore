@@ -1,9 +1,20 @@
-/.ipynb_checkpoints/*
-/.vscode/*
+# R
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-*.ini
+
+# Python
+*/.ipynb_checkpoints/
+
+#C
+/build*
+CMakeLists.txt.user
+CMakeLists.txt.*
+*.o
+*.exe
+
+# others
 *.jpg
 *.xcf
+
